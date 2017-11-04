@@ -1,14 +1,25 @@
 package com.github.glowingpotato.islanddecimation.world.island;
 
+import java.util.ArrayList;
+
 public class Terrain {
-    public Terrain(float[] shape) {
-	this.shape = shape;
+	
+	private ArrayList<Double[]> terrain = new ArrayList<Double[]>();
+	
+    public Terrain(ArrayList<Double[]> terrain) {
+    	this.terrain = terrain;
     }
-    private float[] shape;
-    public float[] getShape() {
-	return shape;
+    
+    public void update(Terrain terrain) {
+    	if(terrain.getTerrain() != null)
+    		setTerrain(terrain.getTerrain());
     }
-    public void setShape(float[] shape) {
-	this.shape = shape;
-    }
+
+	public ArrayList<Double[]> getTerrain() {
+		return terrain;
+	}
+
+	public void setTerrain(ArrayList<Double[]> terrain) {
+		this.terrain = terrain;
+	}
 }

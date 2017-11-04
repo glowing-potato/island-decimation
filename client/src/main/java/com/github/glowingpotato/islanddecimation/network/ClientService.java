@@ -20,22 +20,8 @@ public class ClientService {
 	}
 	
 	private static void updateItem(String key, Object object) {
-		//I know this code is incorrect.
-		if(key == "island") {
-			GameState.getState().getUser().getIsland();
-		}
-		else if(key == "world") {
-			GameState.getState().getUser().getWorld();
-		}
-		else if(key == "id") {
-			GameState.getState().getUser().getID();
-		}
-		else if(key == "score") {
-			GameState.getState().getUser().getScore();
-		}
-		else if(key == "xp") {
-			GameState.getState().getUser().getXP();
-		}
+		//TODO put some actual code here
+		GameState.getState().getIslands();
 	}
 
 	private static Map<String, Object> readJson(String jsonContent) {
