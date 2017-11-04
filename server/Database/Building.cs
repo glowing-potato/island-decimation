@@ -7,45 +7,54 @@ using Com.GitHub.GlowingPotato.IslandDecimation.Server.Model;
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class Building {
         [Key]
-        public long Id {
+        public virtual long Id {
             get;
             set;
         }
 
-        public long IslandId {
+        public virtual long IslandId {
             get;
             set;
         }
 
         [ForeignKey("IslandId")]
-        public Island Island {
+        public virtual Island Island {
             get;
             set;
         }
 
-        public BuildingType Type {
+        public virtual BuildingType Type {
             get;
             set;
         }
 
-        public double X {
+        public virtual double X {
             get;
             set;
         }
 
-        public double Y {
+        public virtual double Y {
             get;
             set;
         }
 
-        public int Level {
+        public virtual int Level {
             get;
             set;
         }
 
-        public ICollection<UpgradeLog> UpgradeLogs {
-            get;
-            set;
+        ICollection<UpgradeLog> upgradeLogs;
+
+        public virtual ICollection<UpgradeLog> UpgradeLogs {
+            get {
+                if (upgradeLogs == null) {
+                    upgradeLogs = new List<UpgradeLog>();
+                }
+                return upgradeLogs;
+            }
+            set {
+                upgradeLogs = value;
+            }
         }
     }
 }

@@ -5,33 +5,33 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class BattleTargetLog {
         [Key]
-        public long Id {
+        public virtual long Id {
             get;
             set;
         }
 
-        public long PlaceId {
+        public virtual long PlaceId {
             get;
             set;
         }
 
         [ForeignKey("PlaceId")]
-        public BattlePlaceLog Place {
+        public virtual BattlePlaceLog Place {
             get;
             set;
         }
 
-        public double X {
+        public virtual double X {
             get;
             set;
         }
 
-        public double Y {
+        public virtual double Y {
             get;
             set;
         }
 
-        public DateTime Time {
+        public virtual DateTime Time {
             get;
             set;
         }

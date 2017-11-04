@@ -7,45 +7,54 @@ using Com.GitHub.GlowingPotato.IslandDecimation.Server.Model;
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class BattlePlaceLog {
         [Key]
-        public long Id {
+        public virtual long Id {
             get;
             set;
         }
 
-        public long BattleIslandId {
+        public virtual long BattleIslandId {
             get;
             set;
         }
 
         [ForeignKey("BattleIslandId")]
-        public BattleIsland BattleIsland {
+        public virtual BattleIsland BattleIsland {
             get;
             set;
         }
 
-        public TroopType Type {
+        public virtual TroopType Type {
             get;
             set;
         }
 
-        public double X {
+        public virtual double X {
             get;
             set;
         }
 
-        public double Y {
+        public virtual double Y {
             get;
             set;
         }
 
-        public DateTime Time {
+        public virtual DateTime Time {
             get;
             set;
         }
 
-        public ICollection<BattleTargetLog> Targets {
-            get;
-            set;
+        ICollection<BattleTargetLog> targets;
+
+        public virtual ICollection<BattleTargetLog> Targets {
+            get {
+                if (targets == null) {
+                    targets = new List<BattleTargetLog>();
+                }
+                return targets;
+            }
+            set {
+                targets = value;
+            }
         }
     }
 }
