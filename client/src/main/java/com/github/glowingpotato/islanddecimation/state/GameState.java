@@ -28,7 +28,7 @@ public class GameState {
 	private FontManager fontManager = new FontManager();
 	private ModelManager modelManager = new ModelManager();
 	private TextureManager textureManager = new TextureManager();
-	private List<Troop> troops;
+	private List<Troop> troops = new ArrayList<Troop>();
 	
 	
 	public List<Troop> getTroops() {

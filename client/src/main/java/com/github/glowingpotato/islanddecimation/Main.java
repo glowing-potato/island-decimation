@@ -6,10 +6,8 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 import org.lwjgl.glfw.GLFW;
-import org.lwjgl.opengl.GL11;
 
 import com.github.glowingpotato.islanddecimation.gui.GLWindow;
-import com.github.glowingpotato.islanddecimation.render.GUIRenderer;
 import com.github.glowingpotato.islanddecimation.render.IslandRenderer;
 import com.github.glowingpotato.islanddecimation.render.SkyRenderer;
 import com.github.glowingpotato.islanddecimation.render.TroopRenderer;
@@ -18,7 +16,10 @@ import com.github.glowingpotato.islanddecimation.util.Perlin;
 import com.github.glowingpotato.islanddecimation.view.Island;
 import com.github.glowingpotato.islanddecimation.view.Resource;
 import com.github.glowingpotato.islanddecimation.view.Terrain;
-import com.glutilities.text.FontManager;
+import com.github.glowingpotato.islanddecimation.view.Troop;
+import com.github.glowingpotato.islanddecimation.view.TroopType;
+import com.glutilities.util.Vertex2;
+import com.glutilities.util.Vertex3;
 
 public class Main {
 	public static void main(String[] args) {
@@ -56,6 +57,7 @@ public class Main {
 		}
 		Terrain t = new Terrain(Arrays.asList(shape));
 		GameState.getState().getIslands().add(new Island(0.0, null, new Resource(1, 2, 3), t, null));
+		GameState.getState().getTroops().add(new Troop(TroopType.ARCHER, new Vertex3(5, 5, 5), new Vertex2(125, 125), 0, 10));
 		window.addUIRenderer(new SkyRenderer());
 		window.addUIRenderer(new GUIRenderer());
 		window.addGameRenderer(new IslandRenderer());
