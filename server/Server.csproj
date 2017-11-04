@@ -100,6 +100,10 @@
     <Compile Include="Database\BattleIsland.cs" />
     <Compile Include="Database\BattlePlaceLog.cs" />
     <Compile Include="Database\BattleTargetLog.cs" />
+    <Compile Include="Controller\WorldBattleManager.cs" />
+    <Compile Include="Controller\IslandValidator.cs" />
+    <Compile Include="Controller\IslandGenerator.cs" />
+    <Compile Include="Controller\BattleManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

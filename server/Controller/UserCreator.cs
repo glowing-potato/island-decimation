@@ -9,6 +9,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Controller {
         const int StartingWood = 100;
         const int StartingWheat = 50;
         const int StartingIridium = 10;
+        const int IslandChoices = 10;
 
         public static void CreateUser(User user) {
             World world = DatabaseContext.Instance.Worlds.OrderByDescending(w => w.StartTime).FirstOrDefault();
@@ -20,15 +21,15 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Controller {
             }
             user.World = world;
             DatabaseContext.Instance.Users.Add(user);
-            Island island = new Island {
-                User = user,
-                Wood = StartingWood,
-                Wheat = StartingWheat,
-                Iridium = StartingIridium
-            };
-            DatabaseContext.Instance.Islands.Add(island);
-            BuildingManager buildings = new BuildingManager(island);
-            buildings.Build(BuildingType.Castle, 0, 0);
+            for (int i = 0; i < IslandChoices; ++i) {
+                Island island = IslandGenerator.GenerateValidIsland(user);
+                island.Wood = StartingWood;
+                island.Wheat = StartingWheat;
+                island.Iridium = StartingIridium;
+                DatabaseContext.Instance.Islands.Add(island);
+                BuildingManager buildings = new BuildingManager(island);
+                buildings.Build(BuildingType.Castle, 0, 0);
+            }
         }
     }
 }

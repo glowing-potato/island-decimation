@@ -11,7 +11,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 
 #region UserIsland
         [JsonProperty("userIsland")]
-        public Island UserIsland;
+        public ViewModelList<Island> UserIsland;
 
         public bool ShouldSerializeUserIsland() {
             return UserIsland.HasUpdated;
