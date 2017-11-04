@@ -1,2 +1,2 @@
 # island-decimation
-A game for the 2017 Hack K-State
+A game for the 2017 Hack K-State Competition
