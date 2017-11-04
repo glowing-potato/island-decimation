@@ -1,4 +1,4 @@
-package com.github.glowingpotato.islanddecimation.world.island;
+package com.github.glowingpotato.islanddecimation.view;
 
 public class Resource {
 	

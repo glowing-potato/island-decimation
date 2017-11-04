@@ -1,4 +1,4 @@
-package com.github.glowingpotato.islanddecimation.battle;
+package com.github.glowingpotato.islanddecimation.view;
 
 public enum TroopType {
 

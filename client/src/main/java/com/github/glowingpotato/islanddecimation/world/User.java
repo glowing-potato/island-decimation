@@ -1,6 +1,6 @@
 package com.github.glowingpotato.islanddecimation.world;
 
-import com.github.glowingpotato.islanddecimation.world.island.Island;
+import com.github.glowingpotato.islanddecimation.view.Island;
 
 public class User {
     public User(int id, World world, Island island, String username, String password, double score, double xp) {
