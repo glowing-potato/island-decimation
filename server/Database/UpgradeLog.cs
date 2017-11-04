@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class UpgradeLog {
         [Key]
-        public ulong Id {
+        public long Id {
             get;
             set;
         }
 
-        public ulong IslangId {
+        public long IslandId {
             get;
             set;
         }
@@ -21,7 +21,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public ulong BuildingId {
+        public long BuildingId {
             get;
             set;
         }
@@ -32,7 +32,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public ushort Level {
+        public int Level {
             get;
             set;
         }

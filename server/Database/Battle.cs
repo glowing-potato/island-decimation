@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class Battle {
         [Key]
-        public ulong Id {
+        public long Id {
             get;
             set;
         }
@@ -15,13 +16,18 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public ulong WinnerId {
+        public long WinnerId {
             get;
             set;
         }
 
         [ForeignKey("WinnerId")]
-        public User Winner {
+        public Island Winner {
+            get;
+            set;
+        }
+
+        public ICollection<BattleIsland> Islands {
             get;
             set;
         }

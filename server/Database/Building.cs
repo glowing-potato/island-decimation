@@ -1,10 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Com.GitHub.GlowingPotato.IslandDecimation.Server.Model;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class Building {
         [Key]
-        public ulong Id {
+        public long Id {
+            get;
+            set;
+        }
+
+        public long IslandId {
+            get;
+            set;
+        }
+
+        [ForeignKey("IslandId")]
+        public Island Island {
             get;
             set;
         }
@@ -14,17 +28,22 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public decimal X {
+        public double X {
             get;
             set;
         }
 
-        public decimal Y {
+        public double Y {
             get;
             set;
         }
 
-        public ushort Level {
+        public int Level {
+            get;
+            set;
+        }
+
+        public ICollection<UpgradeLog> UpgradeLogs {
             get;
             set;
         }

@@ -1,16 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class User {
         [Key]
-        public ulong Id {
+        public long Id {
             get;
             set;
         }
 
-        public ulong WorldId {
+        public string Email {
+            get;
+            set;
+        }
+
+        public string PasswordHash {
+            get;
+            set;
+        }
+
+        public double Score {
+            get;
+            set;
+        }
+
+        public double Experience {
+            get;
+            set;
+        }
+
+        public long WorldId {
             get;
             set;
         }
@@ -21,33 +42,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public ulong IslandId {
-            get;
-            set;
-        }
-
-        [ForeignKey("IslandId")]
-        public Island Island {
-            get;
-            set;
-        }
-
-        public string Username {
-            get;
-            set;
-        }
-
-        public string PasswordHash {
-            get;
-            set;
-        }
-
-        public decimal Score {
-            get;
-            set;
-        }
-
-        public decimal Experience {
+        public ICollection<Island> Islands {
             get;
             set;
         }

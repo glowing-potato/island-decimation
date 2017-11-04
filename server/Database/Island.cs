@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class Island {
         [Key]
-        public ulong Id {
+        public long Id {
             get;
             set;
         }
 
-        public ulong UserId {
+        public long UserId {
             get;
             set;
         }
@@ -21,32 +22,47 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public decimal ShapeX {
+        public double FractalX {
             get;
             set;
         }
 
-        public decimal ShapeY {
+        public double FractalY {
             get;
             set;
         }
 
-        public decimal Wood {
+        public int Wood {
             get;
             set;
         }
 
-        public decimal Wheat {
+        public int Wheat {
             get;
             set;
         }
 
-        public decimal Iridium {
+        public int Iridium {
             get;
             set;
         }
 
         public string Code {
+            get;
+            set;
+        }
+
+        public ICollection<Building> Buildings {
+            get;
+            set;
+        }
+
+        public ICollection<UpgradeLog> UpgradeLogs {
+            get;
+            set;
+        }
+
+        public ICollection<Battle> Battles {
             get;
             set;
         }

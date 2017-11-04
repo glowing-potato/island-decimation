@@ -1,27 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class BattleIsland {
         [Key]
-        public ulong Id {
+        public long Id {
             get;
             set;
         }
 
-        public ulong UserId {
+        public long IslandId {
             get;
             set;
         }
 
-        [ForeignKey("UserId")]
-        public User User {
+        [ForeignKey("IslandId")]
+        public Island Island {
             get;
             set;
         }
 
-        public ulong BattleId {
+        public long BattleId {
             get;
             set;
         }
@@ -32,17 +33,17 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public decimal X {
+        public double X {
             get;
             set;
         }
 
-        public decimal y {
+        public double Y {
             get;
             set;
         }
 
-        public string Code {
+        public ICollection<BattlePlaceLog> PlaceLogs {
             get;
             set;
         }

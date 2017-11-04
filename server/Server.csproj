@@ -23,6 +23,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,21 +57,48 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="DevOne.Security.Cryptography.BCrypt">
+      <HintPath>..\packages\BCrypt.1.0.0.0\lib\DevOne.Security.Cryptography.BCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ARSoft.Tools.Net">
+      <HintPath>..\packages\ARSoft.Tools.Net.2.2.9\lib\net45\ARSoft.Tools.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Database\DatabaseContext.cs" />
-    <Compile Include="Database\World.cs" />
     <Compile Include="Database\User.cs" />
+    <Compile Include="Network\NetworkServer.cs" />
+    <Compile Include="Network\ConnectedClient.cs" />
+    <Compile Include="View\ViewModel.cs" />
+    <Compile Include="View\Island.cs" />
+    <Compile Include="View\Resources.cs" />
+    <Compile Include="View\Terrain.cs" />
+    <Compile Include="View\Vertex3.cs" />
+    <Compile Include="View\Building.cs" />
+    <Compile Include="Model\BuildingType.cs" />
+    <Compile Include="Model\TroopType.cs" />
+    <Compile Include="View\Troop.cs" />
+    <Compile Include="View\Vertex2.cs" />
+    <Compile Include="View\ViewState.cs" />
+    <Compile Include="View\IViewModel.cs" />
+    <Compile Include="View\ViewModelList.cs" />
+    <Compile Include="Database\World.cs" />
     <Compile Include="Database\Island.cs" />
+    <Compile Include="Controller\UserCreator.cs" />
     <Compile Include="Database\Building.cs" />
-    <Compile Include="Database\BuildingType.cs" />
     <Compile Include="Database\UpgradeLog.cs" />
-    <Compile Include="Database\BattleIsland.cs" />
+    <Compile Include="Controller\BuildingManager.cs" />
     <Compile Include="Database\Battle.cs" />
+    <Compile Include="Database\BattleIsland.cs" />
     <Compile Include="Database\BattlePlaceLog.cs" />
-    <Compile Include="Database\TroopType.cs" />
     <Compile Include="Database\BattleTargetLog.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +116,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Network\" />
+    <Folder Include="View\" />
+    <Folder Include="Model\" />
+    <Folder Include="Controller\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

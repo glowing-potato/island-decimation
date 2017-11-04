@@ -5,54 +5,33 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class BattleTargetLog {
         [Key]
-        public ulong Id {
+        public long Id {
             get;
             set;
         }
 
-        public ulong BattleId {
+        public long PlaceId {
             get;
             set;
         }
 
-        [ForeignKey("BattleId")]
-        public Battle Battle {
+        [ForeignKey("PlaceId")]
+        public BattlePlaceLog Place {
             get;
             set;
         }
 
-        public ulong IslandId {
+        public double X {
             get;
             set;
         }
 
-        [ForeignKey("IslandId")]
-        public Island Island {
+        public double Y {
             get;
             set;
         }
 
         public DateTime Time {
-            get;
-            set;
-        }
-
-        public ulong TargetId {
-            get;
-            set;
-        }
-
-        public BattlePlaceLog Target {
-            get;
-            set;
-        }
-
-        public decimal X {
-            get;
-            set;
-        }
-
-        public decimal Y {
             get;
             set;
         }
