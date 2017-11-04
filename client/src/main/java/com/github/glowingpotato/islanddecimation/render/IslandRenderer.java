@@ -49,7 +49,7 @@ public class IslandRenderer extends Renderer {
 				// GL11.glMaterialfv(GL11.GL_FRONT, GL11.GL_AMBIENT | GL11.GL_DIFFUSE,
 				// new float[] { ipol(0.2f, 0.8f, g), ipol(0.8f, 0.8f, g), ipol(0.2f, 0.4f, g),
 				// 1 });
-				material(ipol(0.2f, 0.8f, g), ipol(0.8f, 0.8f, g), ipol(0.2f, 0.4f, g), 1);
+				material(ipol(0.2f, 0.8f, g), ipol(0.8f, 0.8f, g), ipol(0.2f, 0.4f, g), ipol(1, 0, (g + 3) / 5f));
 				// GL11.glNormal3d(a1.getX(), a1.getY(), a1.getZ());
 				normal(x, y, vertices);
 				GL11.glVertex3f(index % IslandRenderer.ISLAND_SIZE - ISLAND_RADIUS,
