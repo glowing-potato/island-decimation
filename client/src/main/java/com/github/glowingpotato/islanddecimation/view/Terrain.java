@@ -1,14 +1,14 @@
 package com.github.glowingpotato.islanddecimation.view;
 
 import java.util.ArrayList;
-import com.glutilities.util.Vertex3;
+import java.util.List;
 
 public class Terrain {
 	
-	private ArrayList<Vertex3> terrain = new ArrayList<Vertex3>();
+	private List<Float> terrain = new ArrayList<Float>();
 	
-    public Terrain(ArrayList<Vertex3> terrain) {
-    	this.terrain = terrain;
+    public Terrain(List<Float> list) {
+    	this.terrain = list;
     }
     
     public void update(Terrain terrain) {
@@ -16,11 +16,19 @@ public class Terrain {
     		setTerrain(terrain.getTerrain());
     }
 
-	public ArrayList<Vertex3> getTerrain() {
+	public List<Float> getTerrain() {
 		return terrain;
 	}
+	
+	public float[] getTerrainAsArray() {
+		float[] result = new float[terrain.size()];
+		for (int i = 0; i < result.length; i++) {
+			result[i] = terrain.get(i);
+		}
+		return result;
+	}
 
-	public void setTerrain(ArrayList<Vertex3> terrain) {
+	public void setTerrain(List<Float> terrain) {
 		this.terrain = terrain;
 	}
 }

@@ -11,7 +11,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 
 #region X
         double x;
-        bool XHasUpdated;
+        bool XHasUpdated = true;
 
         [JsonProperty("x")]
         public double X {
@@ -34,7 +34,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region Y
         double y;
-        bool YHasUpdated;
+        bool YHasUpdated = true;
 
         [JsonProperty("y")]
         public double Y {
@@ -57,7 +57,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region Z
         double z;
-        bool ZHasUpdated;
+        bool ZHasUpdated = true;
 
         [JsonProperty("z")]
         public double Z {

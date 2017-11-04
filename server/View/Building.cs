@@ -12,7 +12,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 
 #region Type
         BuildingType type;
-        bool TypeHasUpdated;
+        bool TypeHasUpdated = true;
 
         [JsonProperty("type")]
         public BuildingType Type {
@@ -43,7 +43,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region Level
         int level;
-        bool LevelHasUpdated;
+        bool LevelHasUpdated = true;
 
         [JsonProperty("level")]
         public int Level {

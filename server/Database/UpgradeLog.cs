@@ -5,39 +5,39 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class UpgradeLog {
         [Key]
-        public long Id {
+        public virtual long Id {
             get;
             set;
         }
 
-        public long IslandId {
+        public virtual long IslandId {
             get;
             set;
         }
 
         [ForeignKey("IslandId")]
-        public Island Island {
+        public virtual Island Island {
             get;
             set;
         }
 
-        public long BuildingId {
+        public virtual long BuildingId {
             get;
             set;
         }
 
         [ForeignKey("BuildingId")]
-        public Building Building {
+        public virtual Building Building {
             get;
             set;
         }
 
-        public int Level {
+        public virtual int Level {
             get;
             set;
         }
 
-        public DateTime Time {
+        public virtual DateTime Time {
             get;
             set;
         }

@@ -12,7 +12,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 
 #region Score
         double score;
-        bool ScoreHasUpdated;
+        bool ScoreHasUpdated = true;
 
         [JsonProperty("score")]
         public double Score {
@@ -35,7 +35,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region Experience
         double experience;
-        bool ExperienceHasUpdated;
+        bool ExperienceHasUpdated = true;
 
         [JsonProperty("experience")]
         public double Experience {
@@ -66,7 +66,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region Terrain
         long terrain;
-        bool TerrainHasUpdated;
+        bool TerrainHasUpdated = true;
 
         [JsonProperty("terrain")]
         public long Terrain {
@@ -92,12 +92,12 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
         public ViewModelList<Building> Buildings;
 
         public bool ShouldSerializeBuildings() {
-            return Buildings.HasUpdated;
+            return Buildings.HasUpdatedAndClear();
         }
 #endregion
 #region Angle
         double angle;
-        bool AngleHasUpdated;
+        bool AngleHasUpdated = true;
 
         [JsonProperty("angle")]
         public double Angle {

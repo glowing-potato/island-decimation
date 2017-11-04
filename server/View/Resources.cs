@@ -11,7 +11,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 
 #region Wood
         int wood;
-        bool WoodHasUpdated;
+        bool WoodHasUpdated = true;
 
         [JsonProperty("wood")]
         public int Wood {
@@ -34,7 +34,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region Wheat
         int wheat;
-        bool WheatHasUpdated;
+        bool WheatHasUpdated = true;
 
         [JsonProperty("wheat")]
         public int Wheat {
@@ -57,7 +57,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region Iridium
         int iridium;
-        bool IridiumHasUpdated;
+        bool IridiumHasUpdated = true;
 
         [JsonProperty("iridium")]
         public int Iridium {

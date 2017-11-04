@@ -21,11 +21,9 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Controller {
             }
             user.World = world;
             DatabaseContext.Instance.Users.Add(user);
-            byte[] terrain = new byte[8];
-            new Random().NextBytes(terrain);
             Island island = new Island {
                 User = user,
-                Terrain = BitConverter.ToInt64(terrain, 0),
+                Terrain = BitConverter.DoubleToInt64Bits(new Random().NextDouble()),
                 Wood = StartingWood,
                 Wheat = StartingWheat,
                 Iridium = StartingIridium
