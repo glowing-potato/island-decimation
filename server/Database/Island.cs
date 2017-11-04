@@ -1,48 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
-    public class User {
+    public class Island {
         [Key]
         public long Id {
             get;
             set;
         }
 
-        public string Email {
+        public long UserId {
             get;
             set;
         }
 
-        public string PasswordHash {
+        [ForeignKey("UserId")]
+        public User User {
             get;
             set;
         }
 
-        public double Score {
+        public double FractalX {
             get;
             set;
         }
 
-        public double Experience {
+        public double FractalY {
             get;
             set;
         }
 
-        public long WorldId {
+        public int Wood {
             get;
             set;
         }
 
-        [ForeignKey("WorldId")]
-        public World World {
+        public int Wheat {
             get;
             set;
         }
 
-        public ICollection<Island> Islands {
+        public int Iridium {
+            get;
+            set;
+        }
+
+        public string Code {
             get;
             set;
         }

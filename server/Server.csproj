@@ -90,6 +90,8 @@
     <Compile Include="View\IViewModel.cs" />
     <Compile Include="View\ViewModelList.cs" />
     <Compile Include="Database\World.cs" />
+    <Compile Include="Database\Island.cs" />
+    <Compile Include="Controller\UserCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -111,6 +113,7 @@
     <Folder Include="Network\" />
     <Folder Include="View\" />
     <Folder Include="Model\" />
+    <Folder Include="Controller\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

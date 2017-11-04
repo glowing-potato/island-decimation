@@ -8,10 +8,10 @@ using System.Reflection;
 using ARSoft.Tools.Net.Dns;
 using DevOne.Security.Cryptography.BCrypt;
 using Com.GitHub.GlowingPotato.IslandDecimation.Server.Database;
+using Com.GitHub.GlowingPotato.IslandDecimation.Server.Controller;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Network {
     public class ConnectedClient : IDisposable {
-        const int MaxPlayersPerWorld = 1000;
         static readonly string VersionString = string.Format("Island Decimation/{0}", Assembly.GetExecutingAssembly().GetName().Version);
 
         TcpClient Client;
@@ -39,19 +39,11 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Network {
                         Dispose();
                         return;
                     }
-                    World world = DatabaseContext.Instance.Worlds.OrderByDescending(w => w.StartTime).FirstOrDefault();
-                    if (world == null || world.Users.Count >= MaxPlayersPerWorld) {
-                        world = new World {
-                            StartTime = DateTime.Now
-                        };
-                        DatabaseContext.Instance.Worlds.Add(world);
-                    }
                     user = new User {
                         Email = email,
-                        PasswordHash = BCryptHelper.HashPassword(password, BCryptHelper.GenerateSalt()),
-                        World = world
+                        PasswordHash = BCryptHelper.HashPassword(password, BCryptHelper.GenerateSalt())
                     };
-                    DatabaseContext.Instance.Users.Add(user);
+                    UserCreator.CreateUser(user);
                     Writer.WriteLine("Account created.");
                 } else {
                     Writer.WriteLine("Email taken.");

@@ -12,7 +12,8 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Network {
             ConnectedClient client = new ConnectedClient(tcp);
             try {
                 client.DoHandshake();
-            } catch {
+            } catch (Exception ex) {
+                Console.Error.WriteLine(ex);
                 client.Dispose();
             }
         }
