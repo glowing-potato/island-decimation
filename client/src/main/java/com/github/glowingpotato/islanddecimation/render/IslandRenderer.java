@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL11;
 import com.github.glowingpotato.islanddecimation.state.GameState;
 import com.github.glowingpotato.islanddecimation.view.Island;
 import com.glutilities.model.Model;
+import com.glutilities.texture.Texture;
 import com.glutilities.util.Vertex3;
 
 public class IslandRenderer extends Renderer {
@@ -28,7 +29,12 @@ public class IslandRenderer extends Renderer {
 			GL11.glHint(GL11.GL_FOG_HINT, GL11.GL_NICEST);
 			GL11.glFogf(GL11.GL_FOG_START, 300.0f); // Fog Start Depth
 			GL11.glFogf(GL11.GL_FOG_END, 500.0f); // Fog End Depth
-			//GL11.glEnable(GL11.GL_FOG);
+			// GL11.glEnable(GL11.GL_FOG);
+			GL11.glEnable(GL11.GL_TEXTURE_2D);
+			/*Texture t = GameState.getState().getTextureManager().get("test");
+			if (t != null) {
+				t.bind();
+			}*/
 			GL11.glBegin(GL11.GL_QUADS);
 			float[] vertices = i.getTerrain().getTerrainAsArray();
 			for (int index = 0; index < vertices.length - IslandRenderer.ISLAND_SIZE - 1; index++) {
@@ -52,6 +58,7 @@ public class IslandRenderer extends Renderer {
 						index / (float) IslandRenderer.ISLAND_SIZE - ISLAND_RADIUS, vertices[index + 1]);
 			}
 			material(0, 0, 1, 0.6f);
+			GL11.glDisable(GL11.GL_TEXTURE_2D);
 			GL11.glVertex2d(-1000, -1000);
 			GL11.glVertex2d(-1000, 1000);
 			GL11.glVertex2d(1000, 1000);
