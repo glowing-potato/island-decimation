@@ -1,5 +1,4 @@
 const electron = require("electron");
-const app = electron.app;
 const path = require("path");
 const url = require("url");
 
@@ -15,21 +14,25 @@ function createWindow () {
         protocol: "file:",
         slashes: true
     }));
-    mainWindow.on("closed", function () {
+    mainWindow.on("closed", () => {
         mainWindow = null;
     });
 }
 
-app.on("ready", createWindow);
+electron.app.on("ready", createWindow);
 
-app.on("window-all-closed", function () {
+electron.app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
-        app.quit();
+        electron.app.quit();
     }
 });
 
-app.on("activate", function () {
+electron.app.on("activate", () => {
     if (mainWindow === null) {
         createWindow();
     }
+});
+
+electron.ipcMain.on("quit", () => {
+    mainWindow.close();
 });

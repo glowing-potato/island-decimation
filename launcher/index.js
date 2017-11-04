@@ -1,4 +1,5 @@
 const childProcess = require("child_process");
+const electron = require("electron");
 const path = require("path");
 
 function login() {
@@ -8,4 +9,5 @@ function login() {
         document.getElementById("email").value,
         document.getElementById("password").value
     ]);
+    electron.ipcRenderer.send("quit");
 }
