@@ -15,7 +15,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public ICollection<User> Users {
+        public List<User> Users {
             get;
             set;
         }

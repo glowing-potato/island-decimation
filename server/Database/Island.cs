@@ -22,12 +22,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public double FractalX {
-            get;
-            set;
-        }
-
-        public double FractalY {
+        public long Terrain {
             get;
             set;
         }

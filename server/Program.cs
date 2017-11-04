@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Com.GitHub.GlowingPotato.IslandDecimation.Server.Network;
+using Com.GitHub.GlowingPotato.IslandDecimation.Server.Database;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server {
     public class Program {
@@ -11,6 +12,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server {
             }
             NetworkServer server = new NetworkServer(port);
             Console.WriteLine("Running server on tcp://localhost:{0}", port);
+            DatabaseContext.Instance.Load();
             Thread.Sleep(int.MaxValue);
         }
     }

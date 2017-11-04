@@ -42,7 +42,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public ICollection<Island> Islands {
+        public List<Island> Islands {
             get;
             set;
         }

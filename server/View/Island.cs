@@ -6,7 +6,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
     public class Island : IViewModel {
         public bool HasUpdated {
             get {
-                return ScoreHasUpdated || ExperienceHasUpdated || Resources.HasUpdated || Terrain.HasUpdated || Buildings.HasUpdated || AngleHasUpdated;
+                return ScoreHasUpdated || ExperienceHasUpdated || Resources.HasUpdated || TerrainHasUpdated || Buildings.HasUpdated || AngleHasUpdated;
             }
         }
 
@@ -65,11 +65,26 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
         }
 #endregion
 #region Terrain
+        long terrain;
+        bool TerrainHasUpdated;
+
         [JsonProperty("terrain")]
-        public Terrain Terrain;
+        public long Terrain {
+            get {
+                return terrain;
+            }
+            set {
+                terrain = value;
+                TerrainHasUpdated = true;
+            }
+        }
 
         public bool ShouldSerializeTerrain() {
-            return Terrain.HasUpdated;
+            bool val = TerrainHasUpdated;
+            if (val) {
+                TerrainHasUpdated = false;
+            }
+            return val;
         }
 #endregion
 #region Buildings

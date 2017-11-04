@@ -22,10 +22,15 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Controller {
             user.World = world;
             DatabaseContext.Instance.Users.Add(user);
             for (int i = 0; i < IslandChoices; ++i) {
-                Island island = IslandGenerator.GenerateValidIsland(user);
-                island.Wood = StartingWood;
-                island.Wheat = StartingWheat;
-                island.Iridium = StartingIridium;
+                byte[] terrain = new byte[8];
+                new Random().NextBytes(terrain);
+                Island island = new Island {
+                    User = user,
+                    Terrain = BitConverter.ToInt64(terrain, 0),
+                    Wood = StartingWood,
+                    Wheat = StartingWheat,
+                    Iridium = StartingIridium
+                };
                 DatabaseContext.Instance.Islands.Add(island);
                 BuildingManager buildings = new BuildingManager(island);
                 buildings.Build(BuildingType.Castle, 0, 0);
