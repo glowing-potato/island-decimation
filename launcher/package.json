@@ -1,0 +1,12 @@
+{
+    "name": "island-decimation",
+    "version": "1.0.0",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "dependencies": {
+        "electron": "^1.7.9",
+        "materialize-css": "^0.100.2"
+    }
+}
