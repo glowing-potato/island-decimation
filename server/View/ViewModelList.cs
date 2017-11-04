@@ -5,13 +5,21 @@ using System.Linq;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
     public class ViewModelList<T> : IList<T>, IViewModel where T : IViewModel {
-        bool hasUpdated;
-        List<T> List = new List<T>();
+        bool hasUpdated = true;
+        List<T> List;
 
         public bool HasUpdated {
             get {
                 return hasUpdated || this.Any(o => o.HasUpdated);
             }
+        }
+
+        public bool HasUpdatedAndClear() {
+            bool val = HasUpdated;
+            if (val) {
+                hasUpdated = false;
+            }
+            return val;
         }
 
         public T this[int index] {
@@ -81,6 +89,13 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 
         IEnumerator IEnumerable.GetEnumerator() {
             return List.GetEnumerator();
+        }
+
+        public ViewModelList(List<T> list) {
+            List = list;
+        }
+
+        public ViewModelList() : this(new List<T>()) {
         }
     }
 }

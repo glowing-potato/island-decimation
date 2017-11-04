@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Timers;
+using System.Linq;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class DatabaseContext : DbContext {
@@ -55,6 +56,10 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
 
         void AutoSave(object sender, ElapsedEventArgs e) {
             SaveChanges();
+        }
+
+        public void Load() {
+            Worlds.ToArray();
         }
 
         DatabaseContext() {

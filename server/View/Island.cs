@@ -6,13 +6,13 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
     public class Island : IViewModel {
         public bool HasUpdated {
             get {
-                return ScoreHasUpdated || ExperienceHasUpdated || Resources.HasUpdated || Terrain.HasUpdated || Buildings.HasUpdated || AngleHasUpdated;
+                return ScoreHasUpdated || ExperienceHasUpdated || Resources.HasUpdated || TerrainHasUpdated || Buildings.HasUpdated || AngleHasUpdated;
             }
         }
 
 #region Score
         double score;
-        bool ScoreHasUpdated;
+        bool ScoreHasUpdated = true;
 
         [JsonProperty("score")]
         public double Score {
@@ -35,7 +35,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region Experience
         double experience;
-        bool ExperienceHasUpdated;
+        bool ExperienceHasUpdated = true;
 
         [JsonProperty("experience")]
         public double Experience {
@@ -65,11 +65,26 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
         }
 #endregion
 #region Terrain
+        long terrain;
+        bool TerrainHasUpdated = true;
+
         [JsonProperty("terrain")]
-        public Terrain Terrain;
+        public long Terrain {
+            get {
+                return terrain;
+            }
+            set {
+                terrain = value;
+                TerrainHasUpdated = true;
+            }
+        }
 
         public bool ShouldSerializeTerrain() {
-            return Terrain.HasUpdated;
+            bool val = TerrainHasUpdated;
+            if (val) {
+                TerrainHasUpdated = false;
+            }
+            return val;
         }
 #endregion
 #region Buildings
@@ -77,12 +92,12 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
         public ViewModelList<Building> Buildings;
 
         public bool ShouldSerializeBuildings() {
-            return Buildings.HasUpdated;
+            return Buildings.HasUpdatedAndClear();
         }
 #endregion
 #region Angle
         double angle;
-        bool AngleHasUpdated;
+        bool AngleHasUpdated = true;
 
         [JsonProperty("angle")]
         public double Angle {

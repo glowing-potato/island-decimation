@@ -6,30 +6,39 @@ using System.Collections.Generic;
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class Battle {
         [Key]
-        public long Id {
+        public virtual long Id {
             get;
             set;
         }
 
-        public DateTime Time {
+        public virtual DateTime Time {
             get;
             set;
         }
 
-        public long WinnerId {
+        public virtual long WinnerId {
             get;
             set;
         }
 
         [ForeignKey("WinnerId")]
-        public Island Winner {
+        public virtual Island Winner {
             get;
             set;
         }
 
-        public ICollection<BattleIsland> Islands {
-            get;
-            set;
+        ICollection<BattleIsland> islands;
+
+        public virtual ICollection<BattleIsland> Islands {
+            get {
+                if (islands == null) {
+                    islands = new List<BattleIsland>();
+                }
+                return islands;
+            }
+            set {
+                islands = value;
+            }
         }
     }
 }

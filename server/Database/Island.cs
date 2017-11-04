@@ -6,65 +6,87 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class Island {
         [Key]
-        public long Id {
+        public virtual long Id {
             get;
             set;
         }
 
-        public long UserId {
+        public virtual long UserId {
             get;
             set;
         }
 
         [ForeignKey("UserId")]
-        public User User {
+        public virtual User User {
             get;
             set;
         }
 
-        public double FractalX {
+        public virtual long Terrain {
             get;
             set;
         }
 
-        public double FractalY {
+        public virtual int Wood {
             get;
             set;
         }
 
-        public int Wood {
+        public virtual int Wheat {
             get;
             set;
         }
 
-        public int Wheat {
+        public virtual int Iridium {
             get;
             set;
         }
 
-        public int Iridium {
+        public virtual string Code {
             get;
             set;
         }
 
-        public string Code {
-            get;
-            set;
+        ICollection<Building> buildings;
+
+        public virtual ICollection<Building> Buildings {
+            get {
+                if (buildings == null) {
+                    buildings = new List<Building>();
+                }
+                return buildings;
+            }
+            set {
+                buildings = value;
+            }
         }
 
-        public ICollection<Building> Buildings {
-            get;
-            set;
+        ICollection<UpgradeLog> upgradeLogs;
+
+        public virtual ICollection<UpgradeLog> UpgradeLogs {
+            get {
+                if (upgradeLogs == null) {
+                    upgradeLogs = new List<UpgradeLog>();
+                }
+                return upgradeLogs;
+            }
+            set {
+                upgradeLogs = value;
+            }
         }
 
-        public ICollection<UpgradeLog> UpgradeLogs {
-            get;
-            set;
-        }
+        ICollection<Battle> battles;
 
-        public ICollection<Battle> Battles {
-            get;
-            set;
+        public virtual ICollection<Battle> Battles {
+            get {
+                if (battles == null) {
+                    battles = new List<Battle>();
+                }
+                return battles;
+            }
+            set {
+                battles = value;
+            }
         }
     }
 }

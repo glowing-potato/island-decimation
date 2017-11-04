@@ -6,45 +6,54 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
     public class User {
         [Key]
-        public long Id {
+        public virtual long Id {
             get;
             set;
         }
 
-        public string Email {
+        public virtual string Email {
             get;
             set;
         }
 
-        public string PasswordHash {
+        public virtual string PasswordHash {
             get;
             set;
         }
 
-        public double Score {
+        public virtual double Score {
             get;
             set;
         }
 
-        public double Experience {
+        public virtual double Experience {
             get;
             set;
         }
 
-        public long WorldId {
+        public virtual long WorldId {
             get;
             set;
         }
 
         [ForeignKey("WorldId")]
-        public World World {
+        public virtual World World {
             get;
             set;
         }
 
-        public ICollection<Island> Islands {
-            get;
-            set;
+        ICollection<Island> islands;
+
+        public virtual ICollection<Island> Islands {
+            get {
+                if (islands == null) {
+                    islands = new List<Island>();
+                }
+                return islands;
+            }
+            set {
+                islands = value;
+            }
         }
     }
 }

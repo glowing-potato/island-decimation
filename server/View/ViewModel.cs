@@ -11,7 +11,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 
 #region UserIsland
         [JsonProperty("userIsland")]
-        public ViewModelList<Island> UserIsland;
+        public Island UserIsland;
 
         public bool ShouldSerializeUserIsland() {
             return UserIsland.HasUpdated;
@@ -22,7 +22,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
         public ViewModelList<Island> BattlingIslands;
 
         public bool ShouldSerializeBattlingIslands() {
-            return BattlingIslands.HasUpdated;
+            return BattlingIslands.HasUpdatedAndClear();
         }
 #endregion
 #region Troops
@@ -30,12 +30,12 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
         public ViewModelList<Troop> Troops;
 
         public bool ShouldSerializeTroops() {
-            return Troops.HasUpdated;
+            return Troops.HasUpdatedAndClear();
         }
 #endregion
 #region State
         ViewState state;
-        bool StateHasUpdated;
+        bool StateHasUpdated = true;
 
         [JsonProperty("state")]
         public ViewState State {
