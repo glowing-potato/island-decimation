@@ -8,5 +8,5 @@ repositories {
 }
 
 dependencies {
-	compile "com.github.hanavan99:GLUtilities:0.0.1-SNAPSHOT"
+	compile "com.github.hanavan99:GLUtilities:0.0.2-SNAPSHOT"
 }
