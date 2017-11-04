@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Com.GitHub.GlowingPotato.IslandDecimation.Server.Model;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
-    public class Building {
+    public class UpgradeLog {
         [Key]
         public long Id {
             get;
@@ -23,17 +21,13 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public BuildingType Type {
+        public long BuildingId {
             get;
             set;
         }
 
-        public double X {
-            get;
-            set;
-        }
-
-        public double Y {
+        [ForeignKey("BuildingId")]
+        public Building Building {
             get;
             set;
         }
@@ -43,7 +37,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public ICollection<UpgradeLog> UpgradeLogs {
+        public DateTime Time {
             get;
             set;
         }

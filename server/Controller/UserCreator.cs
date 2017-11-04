@@ -27,12 +27,8 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Controller {
                 Iridium = StartingIridium
             };
             DatabaseContext.Instance.Islands.Add(island);
-            Building castle = new Building {
-                Island = island,
-                Type = BuildingType.Castle,
-                Level = 1
-            };
-            DatabaseContext.Instance.Buildings.Add(castle);
+            BuildingManager buildings = new BuildingManager(island);
+            buildings.Build(BuildingType.Castle, 0, 0);
         }
     }
 }

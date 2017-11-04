@@ -18,6 +18,11 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
+        public virtual DbSet<UpgradeLog> UpgradeLogs {
+            get;
+            set;
+        }
+
         public virtual DbSet<User> Users {
             get;
             set;
