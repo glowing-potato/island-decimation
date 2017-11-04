@@ -56,22 +56,23 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="DevOne.Security.Cryptography.BCrypt">
+      <HintPath>..\packages\BCrypt.1.0.0.0\lib\DevOne.Security.Cryptography.BCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ARSoft.Tools.Net">
+      <HintPath>..\packages\ARSoft.Tools.Net.2.2.9\lib\net45\ARSoft.Tools.Net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Database\DatabaseContext.cs" />
-    <Compile Include="Database\World.cs" />
     <Compile Include="Database\User.cs" />
-    <Compile Include="Database\Island.cs" />
-    <Compile Include="Database\Building.cs" />
-    <Compile Include="Database\BuildingType.cs" />
-    <Compile Include="Database\UpgradeLog.cs" />
-    <Compile Include="Database\BattleIsland.cs" />
-    <Compile Include="Database\Battle.cs" />
-    <Compile Include="Database\BattlePlaceLog.cs" />
-    <Compile Include="Database\TroopType.cs" />
-    <Compile Include="Database\BattleTargetLog.cs" />
+    <Compile Include="Network\NetworkServer.cs" />
+    <Compile Include="Network\ConnectedClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -88,6 +89,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Network\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
