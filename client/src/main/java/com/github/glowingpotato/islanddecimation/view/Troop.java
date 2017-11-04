@@ -19,18 +19,26 @@ public class Troop {
 		this.islandIndex = islandIndex;
 		this.health = health;
 	}
+
+	private double deltaX;
+	private double deltaY;
+	private double deltaZ;
+	private double z;
 	
 	public void animate(float speed) {
 		double deltaX = targetPosition.getX() - position.getX();
 		double deltaY = targetPosition.getY() - position.getY();
-		if(deltaX < 5 || deltaY < 5) {
+		if(deltaX < 5 || deltaY < 5)
 			health--;
-		}
 		double normalizer = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
 		double normalX = deltaX / normalizer;
 		double normalY = deltaY / normalizer;
+		this.deltaX = normalX;
+		this.deltaY = normalY;
 		float zLevel= GameState.getState().getIslands().get(0).getTerrain().get((int) getPosition().getX(), (int) getPosition().getY());
 		zLevel = (zLevel == Float.NaN) ? 0 : zLevel;
+		deltaZ = zLevel - z;
+		z = zLevel;
 		setPosition(new Vertex3(getPosition().getX() + normalX, getPosition().getY() + normalY, zLevel));
 	}
 	
@@ -57,6 +65,18 @@ public class Troop {
 
 	public Vertex3 getPosition() {
 		return position;
+	}
+	
+	public double getDeltaX() {
+		return deltaX;
+	}
+	
+	public double getDeltaY() {
+		return deltaY;
+	}
+	
+	public double getDeltaZ() {
+		return deltaZ;
 	}
 
 	public void setPosition(Vertex3 position) {

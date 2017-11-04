@@ -12,6 +12,7 @@ import com.github.glowingpotato.islanddecimation.gui.GLWindow;
 import com.github.glowingpotato.islanddecimation.render.GUIRenderer;
 import com.github.glowingpotato.islanddecimation.render.IslandRenderer;
 import com.github.glowingpotato.islanddecimation.render.SkyRenderer;
+import com.github.glowingpotato.islanddecimation.render.TroopRenderer;
 import com.github.glowingpotato.islanddecimation.state.GameState;
 import com.github.glowingpotato.islanddecimation.util.Perlin;
 import com.github.glowingpotato.islanddecimation.view.Island;
@@ -56,6 +57,7 @@ public class Main {
 		window.addUIRenderer(new SkyRenderer());
 		// window.addUIRenderer(new GUIRenderer());
 		window.addGameRenderer(new IslandRenderer());
+		window.addGameRenderer(new TroopRenderer());
 		window.loop();
 		window.close();
 	}

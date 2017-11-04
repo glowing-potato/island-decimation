@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.github.glowingpotato.islanddecimation.render.Camera;
 import com.github.glowingpotato.islanddecimation.view.Island;
+import com.github.glowingpotato.islanddecimation.view.Troop;
 import com.github.glowingpotato.islanddecimation.world.User;
 import com.glutilities.model.ModelManager;
 import com.glutilities.text.FontManager;
@@ -25,6 +26,12 @@ public class GameState {
 	private FontManager fontManager = new FontManager();
 	private ModelManager modelManager = new ModelManager();
 	private TextureManager textureManager = new TextureManager();
+	private List<Troop> troops;
+	
+	
+	public List<Troop> getTroops() {
+		return troops;
+	}
 
 	public static GameState getState() {
 		return state;
