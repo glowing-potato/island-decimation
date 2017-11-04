@@ -92,6 +92,7 @@
     <Compile Include="Database\World.cs" />
     <Compile Include="Database\Island.cs" />
     <Compile Include="Controller\UserCreator.cs" />
+    <Compile Include="Database\Building.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

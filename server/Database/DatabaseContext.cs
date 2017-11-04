@@ -8,6 +8,11 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
         public static readonly DatabaseContext Instance = new DatabaseContext();
         Timer Timer;
 
+        public virtual DbSet<Building> Buildings {
+            get;
+            set;
+        }
+
         public virtual DbSet<Island> Islands {
             get;
             set;

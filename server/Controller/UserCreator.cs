@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Com.GitHub.GlowingPotato.IslandDecimation.Server.Database;
+using Com.GitHub.GlowingPotato.IslandDecimation.Server.Model;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Controller {
     public class UserCreator {
@@ -26,6 +27,12 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Controller {
                 Iridium = StartingIridium
             };
             DatabaseContext.Instance.Islands.Add(island);
+            Building castle = new Building {
+                Island = island,
+                Type = BuildingType.Castle,
+                Level = 1
+            };
+            DatabaseContext.Instance.Buildings.Add(castle);
         }
     }
 }

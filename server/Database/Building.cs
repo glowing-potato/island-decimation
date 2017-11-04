@@ -1,58 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Com.GitHub.GlowingPotato.IslandDecimation.Server.Model;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
-    public class Island {
+    public class Building {
         [Key]
         public long Id {
             get;
             set;
         }
 
-        public long UserId {
+        public long IslandId {
             get;
             set;
         }
 
-        [ForeignKey("UserId")]
-        public User User {
+        [ForeignKey("IslandId")]
+        public Island Island {
             get;
             set;
         }
 
-        public double FractalX {
+        public BuildingType Type {
             get;
             set;
         }
 
-        public double FractalY {
+        public double X {
             get;
             set;
         }
 
-        public int Wood {
+        public double Y {
             get;
             set;
         }
 
-        public int Wheat {
-            get;
-            set;
-        }
-
-        public int Iridium {
-            get;
-            set;
-        }
-
-        public string Code {
-            get;
-            set;
-        }
-
-        public ICollection<Building> Buildings {
+        public int Level {
             get;
             set;
         }
