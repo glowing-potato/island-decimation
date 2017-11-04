@@ -3,9 +3,8 @@ package com.github.glowingpotato.islanddecimation.state;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.glowingpotato.islanddecimation.render.Camera;
+import com.github.glowingpotato.islanddecimation.view.Island;
 import com.github.glowingpotato.islanddecimation.world.User;
-import com.github.glowingpotato.islanddecimation.world.island.Island;
 
 public class GameState {
 

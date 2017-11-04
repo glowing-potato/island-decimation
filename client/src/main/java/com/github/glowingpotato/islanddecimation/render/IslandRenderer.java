@@ -5,8 +5,7 @@ import java.util.List;
 import org.lwjgl.opengl.GL11;
 
 import com.github.glowingpotato.islanddecimation.state.GameState;
-import com.github.glowingpotato.islanddecimation.world.island.Island;
-import com.glutilities.util.Vertex3;
+import com.github.glowingpotato.islanddecimation.view.Island;
 
 public class IslandRenderer extends Renderer {
 
