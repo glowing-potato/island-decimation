@@ -13,6 +13,11 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
+        public virtual DbSet<World> Worlds {
+            get;
+            set;
+        }
+
         void AutoSave(object sender, ElapsedEventArgs e) {
             SaveChanges();
         }

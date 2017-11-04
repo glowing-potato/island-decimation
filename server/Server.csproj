@@ -89,6 +89,7 @@
     <Compile Include="View\ViewState.cs" />
     <Compile Include="View\IViewModel.cs" />
     <Compile Include="View\ViewModelList.cs" />
+    <Compile Include="Database\World.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

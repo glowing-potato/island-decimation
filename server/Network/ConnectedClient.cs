@@ -11,6 +11,7 @@ using Com.GitHub.GlowingPotato.IslandDecimation.Server.Database;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Network {
     public class ConnectedClient : IDisposable {
+        const int MaxPlayersPerWorld = 1000;
         static readonly string VersionString = string.Format("Island Decimation/{0}", Assembly.GetExecutingAssembly().GetName().Version);
 
         TcpClient Client;
@@ -38,9 +39,17 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Network {
                         Dispose();
                         return;
                     }
+                    World world = DatabaseContext.Instance.Worlds.OrderByDescending(w => w.StartTime).FirstOrDefault();
+                    if (world == null || world.Users.Count >= MaxPlayersPerWorld) {
+                        world = new World {
+                            StartTime = DateTime.Now
+                        };
+                        DatabaseContext.Instance.Worlds.Add(world);
+                    }
                     user = new User {
                         Email = email,
-                        PasswordHash = BCryptHelper.HashPassword(password, BCryptHelper.GenerateSalt())
+                        PasswordHash = BCryptHelper.HashPassword(password, BCryptHelper.GenerateSalt()),
+                        World = world
                     };
                     DatabaseContext.Instance.Users.Add(user);
                     Writer.WriteLine("Account created.");
