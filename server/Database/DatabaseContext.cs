@@ -18,6 +18,16 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
+        public virtual DbSet<BattlePlaceLog> BattlePlaceLogs {
+            get;
+            set;
+        }
+
+        public virtual DbSet<BattleTargetLog> BattleTargetLogs {
+            get;
+            set;
+        }
+
         public virtual DbSet<Building> Buildings {
             get;
             set;

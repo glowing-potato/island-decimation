@@ -1,34 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
-    public class BattleIsland {
+    public class BattleTargetLog {
         [Key]
         public long Id {
             get;
             set;
         }
 
-        public long IslandId {
+        public long PlaceId {
             get;
             set;
         }
 
-        [ForeignKey("IslandId")]
-        public Island Island {
-            get;
-            set;
-        }
-
-        public long BattleId {
-            get;
-            set;
-        }
-
-        [ForeignKey("BattleId")]
-        public Battle Battle {
+        [ForeignKey("PlaceId")]
+        public BattlePlaceLog Place {
             get;
             set;
         }
@@ -43,7 +31,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             set;
         }
 
-        public ICollection<BattlePlaceLog> PlaceLogs {
+        public DateTime Time {
             get;
             set;
         }
