@@ -25,10 +25,9 @@ public class GLWindow {
 	public GLWindow(int width, int height, String title, long monitor) {
 		window = GLFW.glfwCreateWindow(width, height, title, monitor, 0);
 		GLFW.glfwShowWindow(window);
-		GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
-		
+
 		GLFW.glfwSetScrollCallback(window, GLFWScrollCallback.create(new GLFWScrollCallbackI() {
-			
+
 			@Override
 			public void invoke(long window, double xoffset, double yoffset) {
 				// TODO Auto-generated method stub
@@ -37,7 +36,7 @@ public class GLWindow {
 				} else if (yoffset < 0) {
 					GameState.getState().getCamera().zoomOut();
 				}
-				
+
 			}
 		}));
 	}
@@ -54,7 +53,6 @@ public class GLWindow {
 		GL11.glHint(GL11.GL_PERSPECTIVE_CORRECTION_HINT, GL11.GL_NICEST);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		// GL20.glBlendEquationSeparate(GL20.GL_BL, modeAlpha);
 		GL11.glMaterialfv(GL11.GL_FRONT, GL11.GL_SPECULAR, new float[] { 0.3f, 0.3f, 0.3f, 1 });
 		GL11.glMaterialfv(GL11.GL_FRONT, GL11.GL_SHININESS, new float[] { 10, 0, 0, 0 });
 		GL11.glLightfv(GL11.GL_LIGHT0, GL11.GL_POSITION, new float[] { 15, 15, 15, 0 });
@@ -93,7 +91,7 @@ public class GLWindow {
 
 			Camera c = GameState.getState().getCamera();
 			Vertex3 cameraPos = c.getCameraPos();
-			
+
 			GL11.glMatrixMode(GL11.GL_PROJECTION);
 			GL11.glLoadIdentity();
 			GLMath.createPerspective(80, (double) width[0] / height[0], 0.1, 1000);
@@ -106,7 +104,6 @@ public class GLWindow {
 			GL11.glEnable(GL11.GL_LIGHTING);
 			GL11.glEnable(GL11.GL_LIGHT0);
 
-			
 			double angle = c.getYaw();
 			boolean move = false;
 			if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_A) == GLFW.GLFW_PRESS) {
@@ -117,7 +114,8 @@ public class GLWindow {
 				angle += 90;
 				move = true;
 			}
-			Vertex3 dpos = new Vertex3(-Math.sin(angle / 180.0 * Math.PI) * 2, -Math.cos(angle / 180.0 * Math.PI) * 2, 0);
+			Vertex3 dpos = new Vertex3(-Math.sin(angle / 180.0 * Math.PI) * 2, -Math.cos(angle / 180.0 * Math.PI) * 2,
+					0);
 			if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_W) == GLFW.GLFW_PRESS || move) {
 				cameraPos.add(dpos);
 			}
@@ -128,8 +126,10 @@ public class GLWindow {
 			double[] curpos = getCursorPos();
 			double dmousex = curpos[0] - cpos[0];
 			double dmousey = curpos[1] - cpos[1];
-			c.addYaw(dmousex / 6f);
-			c.addPitch(dmousey / 6f);
+			if (GLFW.glfwGetMouseButton(window, GLFW.GLFW_MOUSE_BUTTON_2) == GLFW.GLFW_PRESS) {
+				c.addYaw(dmousex / 6f);
+				c.addPitch(dmousey / 6f);
+			}
 			if (c.getPitch() < 20) {
 				c.setPitch(20);
 			}
@@ -140,7 +140,6 @@ public class GLWindow {
 			GL11.glTranslated(0, 0, -(16 + Math.pow(2, c.getZoom() / 4f)));
 			GL11.glRotated(c.getPitch() - 90, 1, 0, 0);
 			GL11.glRotated(c.getYaw(), 0, 0, 1);
-			// GL11.glRotated(System.nanoTime() / 1000000000d, 0, 0, 1);
 			GL11.glTranslated(cameraPos.getX(), cameraPos.getY(), cameraPos.getZ());
 
 			render3D();

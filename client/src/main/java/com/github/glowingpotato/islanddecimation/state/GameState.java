@@ -6,6 +6,8 @@ import java.util.List;
 import com.github.glowingpotato.islanddecimation.render.Camera;
 import com.github.glowingpotato.islanddecimation.view.Island;
 import com.github.glowingpotato.islanddecimation.world.User;
+import com.glutilities.model.ModelManager;
+import com.glutilities.text.FontManager;
 
 public class GameState {
 
@@ -19,6 +21,8 @@ public class GameState {
 	private List<Island> islands;
 	private User user;
 	private Camera camera;
+	private FontManager fontManager = new FontManager();
+	private ModelManager modelManager = new ModelManager();
 
 	public static GameState getState() {
 		return state;
@@ -34,6 +38,14 @@ public class GameState {
 	
 	public Camera getCamera() {
 		return camera;
+	}
+	
+	public FontManager getFontManager() {
+		return fontManager;
+	}
+	
+	public ModelManager getModelManager() {
+		return modelManager;
 	}
 
 }
