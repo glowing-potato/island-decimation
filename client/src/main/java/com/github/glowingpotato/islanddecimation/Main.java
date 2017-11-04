@@ -6,6 +6,7 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.opengl.GL11;
 
 import com.github.glowingpotato.islanddecimation.gui.GLWindow;
 import com.github.glowingpotato.islanddecimation.render.GUIRenderer;
@@ -35,15 +36,11 @@ public class Main {
 		GLFW.glfwInit();
 		File f = new File("src/main/resources/models/car.obj");
 		GameState.getState().getModelManager().load(f, "test");
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		GameState.getState().getTextureManager().load(new File("src/main/resources/grass.png"), "test");
+		
 		GLWindow window = new GLWindow(800, 600, "Testing", 0);
 		window.makeContextCurrent();
 		window.init();
+		GameState.getState().getTextureManager().load(new File("src/main/resources/grass.png"), "test");
 		Perlin p = new Perlin();
 		Float[] shape = new Float[IslandRenderer.ISLAND_SIZE * IslandRenderer.ISLAND_SIZE];
 		for (int i = 0; i < shape.length; i++) {
