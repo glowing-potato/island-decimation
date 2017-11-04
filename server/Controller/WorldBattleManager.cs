@@ -14,9 +14,6 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Controller {
         ConcurrentBag<User> QueuedUsers;
 
         public void QueueUser(User user) {
-            if (user.Islands.Count != 1) {
-                throw new InvalidOperationException("Player can only battle using a single island");
-            }
             Network.ConnectedUsers[user].Model.State = ViewState.QueueingForBattle;
             QueuedUsers.Add(user);
             if (QueuedUsers.Count > UsersPerBattle) {
