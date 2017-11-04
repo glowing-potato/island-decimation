@@ -8,7 +8,16 @@ public class Camera {
 	private double pitch;
 	private double yaw;
 	private double roll;
+	private int zoom;
 
+	public Camera() {
+		cameraPos = new Vertex3(0, 0, 0);
+		pitch = 60;
+		yaw = 0;
+		roll = 0;
+		zoom = 32;
+	}
+	
 	public Vertex3 getCameraPos() {
 		return cameraPos;
 	}
@@ -51,6 +60,22 @@ public class Camera {
 	
 	public void addRoll(double roll) {
 		this.roll += roll;
+	}
+	
+	public int getZoom() {
+		return zoom;
+	}
+	
+	public void zoomIn() {
+		if (zoom > 8) {
+			zoom--;
+		}
+	}
+	
+	public void zoomOut() {
+		if (zoom < 32) {
+			zoom++;
+		}
 	}
 
 }
