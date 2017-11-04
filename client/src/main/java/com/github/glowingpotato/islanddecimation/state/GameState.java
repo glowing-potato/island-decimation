@@ -6,6 +6,11 @@ import com.github.glowingpotato.islanddecimation.world.island.Island;
 
 public class GameState {
 
+	public GameState(List<Island> islands, User user) {
+	this.islands = islands;
+	this.user = user;
+    }
+
 	private static GameState state;
 	private List<Island> islands;
 	private User user;

@@ -3,6 +3,13 @@ package com.github.glowingpotato.islanddecimation.world.island;
 import com.github.glowingpotato.islanddecimation.world.User;
 
 public class Island {
+    public Island(int id, User user, Terrain shape, int[] resources, String code) {
+	this.id = id;
+	this.user = user;
+	this.shape = shape;
+	this.resources = resources;
+	this.code = code;
+    }
     private int id;
     private User user;
     private Terrain shape;

@@ -1,6 +1,10 @@
 package com.github.glowingpotato.islanddecimation.world;
 
 public class World {
+    public World(int id, long startTime) {
+	this.id = id;
+	this.startTime = startTime;
+    }
     private int id;
     private long startTime;
     public int getID() {

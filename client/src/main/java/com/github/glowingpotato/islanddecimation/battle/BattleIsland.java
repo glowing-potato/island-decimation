@@ -9,6 +9,13 @@ public class BattleIsland {
     private Battle battle;
     private Vertex3 position;
     private String code;
+    public BattleIsland(int id, User user, Battle battle, Vertex3 position, String code) {
+	this.id = id;
+	this.user = user;
+	this.battle = battle;
+	this.position = position;
+	this.code = code;
+    }
     public int getId() {
         return id;
     }
