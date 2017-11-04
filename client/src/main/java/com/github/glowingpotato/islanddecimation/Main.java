@@ -37,7 +37,7 @@ public class Main {
 			int y = i / IslandRenderer.ISLAND_SIZE - IslandRenderer.ISLAND_RADIUS;
 			float dist = (float) Math.pow(Math.sqrt(x * x + y * y), 2) / 1200f;
 			shape[i] = 10f - dist
-					- (float) p.noise(i % IslandRenderer.ISLAND_SIZE / 32d, i / IslandRenderer.ISLAND_SIZE / 32d, 0) * 3
+					- (float) p.noise(i % IslandRenderer.ISLAND_SIZE / 64d, i / IslandRenderer.ISLAND_SIZE / 64d, 0) * 3
 							;
 		}
 		Terrain t = new Terrain(Arrays.asList(shape));

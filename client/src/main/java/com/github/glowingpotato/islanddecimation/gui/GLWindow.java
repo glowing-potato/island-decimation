@@ -108,8 +108,17 @@ public class GLWindow {
 
 			
 			double angle = c.getYaw();
+			boolean move = false;
+			if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_A) == GLFW.GLFW_PRESS) {
+				angle -= 90;
+				move = true;
+			}
+			if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_D) == GLFW.GLFW_PRESS) {
+				angle += 90;
+				move = true;
+			}
 			Vertex3 dpos = new Vertex3(-Math.sin(angle / 180.0 * Math.PI) * 2, -Math.cos(angle / 180.0 * Math.PI) * 2, 0);
-			if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_W) == GLFW.GLFW_PRESS) {
+			if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_W) == GLFW.GLFW_PRESS || move) {
 				cameraPos.add(dpos);
 			}
 			if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_S) == GLFW.GLFW_PRESS) {
