@@ -14,6 +14,14 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
             }
         }
 
+        public bool HasUpdatedAndClear() {
+            bool val = HasUpdated;
+            if (val) {
+                hasUpdated = false;
+            }
+            return val;
+        }
+
         public T this[int index] {
             get {
                 return List[index];

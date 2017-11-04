@@ -61,7 +61,8 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Network {
                         },
                         Level = b.Level
                     }).ToViewModelList(),
-                    Angle = 0
+                    Angle = 0,
+                    Terrain = i.Terrain
                 }).First()
             };
         }

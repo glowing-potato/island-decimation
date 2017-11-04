@@ -92,7 +92,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
         public ViewModelList<Building> Buildings;
 
         public bool ShouldSerializeBuildings() {
-            return Buildings.HasUpdated;
+            return Buildings.HasUpdatedAndClear();
         }
 #endregion
 #region Angle

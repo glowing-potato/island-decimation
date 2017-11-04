@@ -22,7 +22,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
         public ViewModelList<Island> BattlingIslands;
 
         public bool ShouldSerializeBattlingIslands() {
-            return BattlingIslands.HasUpdated;
+            return BattlingIslands.HasUpdatedAndClear();
         }
 #endregion
 #region Troops
@@ -30,7 +30,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
         public ViewModelList<Troop> Troops;
 
         public bool ShouldSerializeTroops() {
-            return Troops.HasUpdated;
+            return Troops.HasUpdatedAndClear();
         }
 #endregion
 #region State
