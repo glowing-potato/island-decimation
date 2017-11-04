@@ -39,9 +39,11 @@ public class Main {
 		GameState.getState().getModelManager().load(f, "test");
 		
 		GLWindow window = new GLWindow(800, 600, "Testing", 0);
+		GameState.getState().setWindow(window);
 		window.makeContextCurrent();
 		window.init();
 		GameState.getState().getTextureManager().load(new File("src/main/resources/grass.png"), "test");
+		GameState.getState().getFontManager().load("Arial", "arial");
 		Perlin p = new Perlin();
 		Float[] shape = new Float[IslandRenderer.ISLAND_SIZE * IslandRenderer.ISLAND_SIZE];
 		for (int i = 0; i < shape.length; i++) {
@@ -55,7 +57,7 @@ public class Main {
 		Terrain t = new Terrain(Arrays.asList(shape));
 		GameState.getState().getIslands().add(new Island(0.0, null, new Resource(1, 2, 3), t, null));
 		window.addUIRenderer(new SkyRenderer());
-		// window.addUIRenderer(new GUIRenderer());
+		window.addUIRenderer(new GUIRenderer());
 		window.addGameRenderer(new IslandRenderer());
 		window.addGameRenderer(new TroopRenderer());
 		window.loop();

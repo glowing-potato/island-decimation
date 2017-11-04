@@ -143,7 +143,7 @@ public class GLWindow {
 			GL11.glTranslated(cameraPos.getX(), cameraPos.getY(), cameraPos.getZ());
 
 			render3D();
-
+			
 			GL11.glPopMatrix();
 
 			GLFW.glfwPollEvents();
@@ -183,6 +183,18 @@ public class GLWindow {
 		double[] y = new double[1];
 		GLFW.glfwGetCursorPos(window, x, y);
 		return new double[] { x[0], y[0] };
+	}
+	
+	private int[] getWindowSize() {
+		int[] x = new int[1];
+		int[] y = new int[1];
+		GLFW.glfwGetWindowSize(window, x, y);
+		return new int[] { x[0], y[0] };
+	}
+	
+	public double getAspect() {
+		int[] windowSize = getWindowSize();
+		return (double) windowSize[0] / windowSize[1];
 	}
 
 }

@@ -3,6 +3,7 @@ package com.github.glowingpotato.islanddecimation.state;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.glowingpotato.islanddecimation.gui.GLWindow;
 import com.github.glowingpotato.islanddecimation.render.Camera;
 import com.github.glowingpotato.islanddecimation.view.Island;
 import com.github.glowingpotato.islanddecimation.view.Troop;
@@ -23,6 +24,7 @@ public class GameState {
 	private List<Island> islands;
 	private User user;
 	private Camera camera;
+	private GLWindow window;
 	private FontManager fontManager = new FontManager();
 	private ModelManager modelManager = new ModelManager();
 	private TextureManager textureManager = new TextureManager();
@@ -47,6 +49,14 @@ public class GameState {
 	
 	public Camera getCamera() {
 		return camera;
+	}
+	
+	public GLWindow getWindow() {
+		return window;
+	}
+	
+	public void setWindow(GLWindow window) {
+		this.window = window;
 	}
 	
 	public FontManager getFontManager() {

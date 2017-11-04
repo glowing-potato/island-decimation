@@ -2,6 +2,8 @@ package com.github.glowingpotato.islanddecimation.render;
 
 import java.util.List;
 
+import org.lwjgl.opengl.GL11;
+
 import com.github.glowingpotato.islanddecimation.state.GameState;
 import com.github.glowingpotato.islanddecimation.view.Island;
 import com.github.glowingpotato.islanddecimation.view.Resource;
@@ -14,14 +16,11 @@ public class GUIRenderer extends Renderer {
 	public void render() {
 		// TODO Auto-generated method stub
 		List<Island> islands = GameState.getState().getIslands();
-		System.out.println(islands);
 		Island i = islands.get(0);
-		System.out.println(i);
 		Resource r = i.getResources();
-		System.out.println(r);
 		int iridium = r.getIridium();
 		Charset c = GameState.getState().getFontManager().get("arial");
-		FontManager.drawString(c, "Testing", 0.1, 0.1, 0.1, 16d / 9);
+		FontManager.drawString(c, String.format("Iridium:_%d, Wheat: %d, Wood: %d", r.getIridium(), r.getWheat(), r.getWood()), 0.01, 0.1, 0.005, GameState.getState().getWindow().getAspect(), 0.1);
 	}
 
 }

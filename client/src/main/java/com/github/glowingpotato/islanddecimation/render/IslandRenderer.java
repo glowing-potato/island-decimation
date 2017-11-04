@@ -31,10 +31,10 @@ public class IslandRenderer extends Renderer {
 			GL11.glFogf(GL11.GL_FOG_END, 500.0f); // Fog End Depth
 			// GL11.glEnable(GL11.GL_FOG);
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
-			/*Texture t = GameState.getState().getTextureManager().get("test");
+			Texture t = GameState.getState().getTextureManager().get("test");
 			if (t != null) {
 				t.bind();
-			}*/
+			}
 			GL11.glBegin(GL11.GL_QUADS);
 			float[] vertices = i.getTerrain().getTerrainAsArray();
 			for (int index = 0; index < vertices.length - IslandRenderer.ISLAND_SIZE - 1; index++) {
@@ -43,22 +43,28 @@ public class IslandRenderer extends Renderer {
 				float g = get(x, y, vertices);
 				material(ipol(0.2f, 0.8f, g), ipol(0.8f, 0.8f, g), ipol(0.2f, 0.4f, g), ipol(1, 0, (g + 3) / 5f));
 				normal(x, y, vertices);
+				GL11.glTexCoord2i(0, 0);
 				GL11.glVertex3f(index % IslandRenderer.ISLAND_SIZE - ISLAND_RADIUS,
 						index / (float) IslandRenderer.ISLAND_SIZE - ISLAND_RADIUS, vertices[index]);
 				normal(x, y + 1, vertices);
+				GL11.glTexCoord2i(0, 1);
 				GL11.glVertex3f(index % IslandRenderer.ISLAND_SIZE - ISLAND_RADIUS,
 						index / (float) IslandRenderer.ISLAND_SIZE + 1 - ISLAND_RADIUS,
 						vertices[index + IslandRenderer.ISLAND_SIZE]);
 				normal(x + 1, y + 1, vertices);
+				GL11.glTexCoord2i(1, 1);
 				GL11.glVertex3f(index % IslandRenderer.ISLAND_SIZE + 1 - ISLAND_RADIUS,
 						index / (float) IslandRenderer.ISLAND_SIZE + 1 - ISLAND_RADIUS,
 						vertices[index + IslandRenderer.ISLAND_SIZE + 1]);
 				normal(x + 1, y, vertices);
+				GL11.glTexCoord2i(1, 0);
 				GL11.glVertex3f(index % IslandRenderer.ISLAND_SIZE + 1 - ISLAND_RADIUS,
 						index / (float) IslandRenderer.ISLAND_SIZE - ISLAND_RADIUS, vertices[index + 1]);
 			}
 			material(0, 0, 1, 0.6f);
+			GL11.glEnd();
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
+			GL11.glBegin(GL11.GL_QUADS);
 			GL11.glVertex2d(-1000, -1000);
 			GL11.glVertex2d(-1000, 1000);
 			GL11.glVertex2d(1000, 1000);
