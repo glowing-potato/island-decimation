@@ -12,7 +12,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 
 #region Type
         TroopType type;
-        bool TypeHasUpdated;
+        bool TypeHasUpdated = true;
 
         [JsonProperty("type")]
         public TroopType Type {
@@ -47,7 +47,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region IslandIndex
         int islandIndex;
-        bool IslandIndexHasUpdated;
+        bool IslandIndexHasUpdated = true;
 
         [JsonProperty("island")]
         public int IslandIndex {

@@ -80,7 +80,6 @@
     <Compile Include="View\ViewModel.cs" />
     <Compile Include="View\Island.cs" />
     <Compile Include="View\Resources.cs" />
-    <Compile Include="View\Terrain.cs" />
     <Compile Include="View\Vertex3.cs" />
     <Compile Include="View\Building.cs" />
     <Compile Include="Model\BuildingType.cs" />

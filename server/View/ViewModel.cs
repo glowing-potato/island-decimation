@@ -35,7 +35,7 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
 #endregion
 #region State
         ViewState state;
-        bool StateHasUpdated;
+        bool StateHasUpdated = true;
 
         [JsonProperty("state")]
         public ViewState State {

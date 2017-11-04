@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.View {
     public class ViewModelList<T> : IList<T>, IViewModel where T : IViewModel {
-        bool hasUpdated;
+        bool hasUpdated = true;
         List<T> List;
 
         public bool HasUpdated {
