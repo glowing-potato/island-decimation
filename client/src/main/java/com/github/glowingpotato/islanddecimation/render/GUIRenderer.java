@@ -5,6 +5,7 @@ import java.util.List;
 import com.github.glowingpotato.islanddecimation.state.GameState;
 import com.github.glowingpotato.islanddecimation.view.Island;
 import com.github.glowingpotato.islanddecimation.view.Resource;
+import com.glutilities.text.Charset;
 import com.glutilities.text.FontManager;
 
 public class GUIRenderer extends Renderer {
@@ -19,7 +20,8 @@ public class GUIRenderer extends Renderer {
 		Resource r = i.getResources();
 		System.out.println(r);
 		int iridium = r.getIridium();
-		FontManager.drawString("Arial", "test"/*String.valueOf(iridium)*/, 0.1, 0.1, 0.1, 16d / 9);
+		Charset c = GameState.getState().getFontManager().get("arial");
+		FontManager.drawString(c, "Testing", 0.1, 0.1, 0.1, 16d / 9);
 	}
 
 }

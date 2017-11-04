@@ -8,6 +8,7 @@ import com.github.glowingpotato.islanddecimation.view.Island;
 import com.github.glowingpotato.islanddecimation.world.User;
 import com.glutilities.model.ModelManager;
 import com.glutilities.text.FontManager;
+import com.glutilities.texture.TextureManager;
 
 public class GameState {
 
@@ -23,6 +24,7 @@ public class GameState {
 	private Camera camera;
 	private FontManager fontManager = new FontManager();
 	private ModelManager modelManager = new ModelManager();
+	private TextureManager textureManager = new TextureManager();
 
 	public static GameState getState() {
 		return state;
@@ -46,6 +48,10 @@ public class GameState {
 	
 	public ModelManager getModelManager() {
 		return modelManager;
+	}
+	
+	public TextureManager getTextureManager() {
+		return textureManager;
 	}
 
 }

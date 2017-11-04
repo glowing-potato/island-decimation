@@ -3,6 +3,8 @@ package com.github.glowingpotato.islanddecimation.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.glowingpotato.islanddecimation.render.IslandRenderer;
+
 public class Terrain {
 	
 	private List<Float> terrain = new ArrayList<Float>();
@@ -30,5 +32,12 @@ public class Terrain {
 
 	public void setTerrain(List<Float> terrain) {
 		this.terrain = terrain;
+	}
+	
+	public float get(int x, int y) {
+		if (x >= 0 && x < IslandRenderer.ISLAND_SIZE && y >= 0 && y < IslandRenderer.ISLAND_SIZE) {
+			return getTerrainAsArray()[y * IslandRenderer.ISLAND_SIZE + x];
+		}
+		return Float.NaN;
 	}
 }

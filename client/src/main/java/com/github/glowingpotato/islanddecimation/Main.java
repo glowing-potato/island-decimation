@@ -31,10 +31,16 @@ public class Main {
 		}
 		String username = args[0];
 		String password = args[1];
-		
+
 		GLFW.glfwInit();
 		File f = new File("src/main/resources/models/car.obj");
 		GameState.getState().getModelManager().load(f, "test");
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		GameState.getState().getTextureManager().load(new File("src/main/resources/grass.png"), "test");
 		GLWindow window = new GLWindow(800, 600, "Testing", 0);
 		window.makeContextCurrent();
 		window.init();
@@ -51,7 +57,7 @@ public class Main {
 		Terrain t = new Terrain(Arrays.asList(shape));
 		GameState.getState().getIslands().add(new Island(0.0, null, new Resource(1, 2, 3), t, null));
 		window.addUIRenderer(new SkyRenderer());
-		//window.addUIRenderer(new GUIRenderer());
+		// window.addUIRenderer(new GUIRenderer());
 		window.addGameRenderer(new IslandRenderer());
 		window.loop();
 		window.close();
