@@ -1,12 +1,13 @@
-package com.github.glowingpotato.islanddecimation.world.island;
+package com.github.glowingpotato.islanddecimation.battle;
 
 import com.github.glowingpotato.islanddecimation.world.User;
+import com.glutilities.util.Vertex3;
 
-public class Island {
+public class BattleIsland {
     private int id;
     private User user;
-    private Terrain shape;
-    private int[] resources = new int[3];
+    private Battle battle;
+    private Vertex3 position;
     private String code;
     public int getId() {
         return id;
@@ -20,17 +21,17 @@ public class Island {
     public void setUser(User user) {
         this.user = user;
     }
-    public Terrain getShape() {
-        return shape;
+    public Battle getBattle() {
+        return battle;
     }
-    public void setShape(Terrain shape) {
-        this.shape = shape;
+    public void setBattle(Battle battle) {
+        this.battle = battle;
     }
-    public int[] getResources() {
-        return resources;
+    public Vertex3 getPosition() {
+        return position;
     }
-    public void setResources(int[] resources) {
-        this.resources = resources;
+    public void setPosition(Vertex3 position) {
+        this.position = position;
     }
     public String getCode() {
         return code;
