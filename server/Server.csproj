@@ -95,6 +95,8 @@
     <Compile Include="Database\Building.cs" />
     <Compile Include="Database\UpgradeLog.cs" />
     <Compile Include="Controller\BuildingManager.cs" />
+    <Compile Include="Database\Battle.cs" />
+    <Compile Include="Database\BattleIsland.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

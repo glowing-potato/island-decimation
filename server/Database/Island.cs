@@ -61,5 +61,10 @@ namespace Com.GitHub.GlowingPotato.IslandDecimation.Server.Database {
             get;
             set;
         }
+
+        public ICollection<Battle> Battles {
+            get;
+            set;
+        }
     }
 }
