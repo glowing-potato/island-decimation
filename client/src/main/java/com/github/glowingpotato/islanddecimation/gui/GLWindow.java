@@ -7,7 +7,9 @@ import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
+import com.github.glowingpotato.islanddecimation.render.Camera;
 import com.github.glowingpotato.islanddecimation.render.Renderer;
+import com.github.glowingpotato.islanddecimation.state.GameState;
 import com.glutilities.util.GLMath;
 
 public class GLWindow {
@@ -29,14 +31,14 @@ public class GLWindow {
 
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
 		GL11.glDepthFunc(GL11.GL_LEQUAL);
-		GL11.glShadeModel(GL11.GL_SMOOTH);
 		GL11.glHint(GL11.GL_PERSPECTIVE_CORRECTION_HINT, GL11.GL_NICEST);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glMaterialfv(GL11.GL_FRONT, GL11.GL_SPECULAR, new float[] { 1, 1, 1, 1 });
+		GL11.glMaterialfv(GL11.GL_FRONT, GL11.GL_SPECULAR, new float[] { 0.3f, 0.3f, 0.3f, 1 });
 		GL11.glMaterialfv(GL11.GL_FRONT, GL11.GL_SHININESS, new float[] { 50, 0, 0, 0 });
 		GL11.glLightfv(GL11.GL_LIGHT0, GL11.GL_POSITION, new float[] { 15, 15, 15, 0 });
 		GL11.glColorMaterial(GL11.GL_FRONT, GL11.GL_AMBIENT_AND_DIFFUSE);
+		GL11.glShadeModel(GL11.GL_SMOOTH);
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glEnable(GL11.GL_LIGHT0);
 
@@ -58,6 +60,9 @@ public class GLWindow {
 			GL11.glLoadIdentity();
 
 			GL11.glPushMatrix();
+			Camera c = GameState.getState().getCamera();
+			GL11.glTranslated(0, 0, -15);
+			GL11.glRotated(-40, 1, 0, 0);
 
 			render();
 

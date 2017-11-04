@@ -15,7 +15,7 @@ switch ( OperatingSystem.current() ) {
 		break
 	case OperatingSystem.LINUX:
 		project.ext.lwjglNatives = "natives-linux"
-	break
+		break
 	case OperatingSystem.MAC_OS:
 		project.ext.lwjglNatives = "natives-macos"
 		break
