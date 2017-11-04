@@ -4,21 +4,21 @@ import java.util.ArrayList;
 
 public class ViewModel {
 	
-	private ArrayList<Island> userIslands = new ArrayList<Island>();
+	private Island userIsland;
 	private ArrayList<Island> battlingIslands = new ArrayList<Island>();
 	private ArrayList<Troop> troops = new ArrayList<Troop>();
 	private ViewState state;
 	
-	public ViewModel(ArrayList<Island> userIslands, ArrayList<Island> battlingIslands, ArrayList<Troop> troops, ViewState state) {
-		this.userIslands = userIslands;
+	public ViewModel(Island userIsland, ArrayList<Island> battlingIslands, ArrayList<Troop> troops, ViewState state) {
+		this.userIsland = userIsland;
 		this.battlingIslands = battlingIslands;
 		this.troops = troops;
 		this.state = state;
 	}
 	
 	public void update(ViewModel viewModel) {
-		if(viewModel.getUserIslands() != null)
-			setUserIslands(viewModel.getUserIslands());
+		if(viewModel.getUserIsland() != null)
+			setUserIsland(viewModel.getUserIsland());
 		if(viewModel.getBattlingIslands() != null)
 			setBattlingIslands(viewModel.getBattlingIslands());
 		if(viewModel.getTroops() != null)
@@ -27,12 +27,12 @@ public class ViewModel {
 			setState(viewModel.getState());
 	}
 
-	public ArrayList<Island> getUserIslands() {
-		return userIslands;
+	public Island getUserIsland() {
+		return userIsland;
 	}
 
-	public void setUserIslands(ArrayList<Island> userIslands) {
-		this.userIslands = userIslands;
+	public void setUserIsland(Island userIsland) {
+		this.userIsland = userIsland;
 	}
 
 	public ArrayList<Island> getBattlingIslands() {
