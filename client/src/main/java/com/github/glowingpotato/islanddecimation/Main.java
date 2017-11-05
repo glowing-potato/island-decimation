@@ -10,7 +10,7 @@ import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.ARBFragmentShader;
 import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.GL20;
-
+import org.newdawn.slick.geom.Vector2f;
 import com.github.glowingpotato.islanddecimation.gui.GLWindow;
 import com.github.glowingpotato.islanddecimation.render.GUIRenderer;
 import com.github.glowingpotato.islanddecimation.render.IslandRenderer;
@@ -100,6 +100,10 @@ public class Main {
 		window.addUIRenderer(new SkyRenderer());
 		window.addUIRenderer(new GUIRenderer());
 		window.addGameRenderer(new IslandRenderer());
+		IslandRenderer secondIsland = new IslandRenderer();
+		secondIsland.offset = new Vertex2(0, 256);
+		secondIsland.drawOcean = false;
+		window.addGameRenderer(secondIsland);
 		window.addGameRenderer(new TroopRenderer());
 		window.loop();
 		window.close();

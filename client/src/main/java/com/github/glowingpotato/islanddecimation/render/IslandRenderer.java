@@ -8,12 +8,15 @@ import com.github.glowingpotato.islanddecimation.state.GameState;
 import com.github.glowingpotato.islanddecimation.view.Island;
 import com.glutilities.model.Model;
 import com.glutilities.texture.Texture;
+import com.glutilities.util.Vertex2;
 import com.glutilities.util.Vertex3;
 
 public class IslandRenderer extends Renderer {
 
 	public static final int ISLAND_SIZE = 256;
 	public static final int ISLAND_RADIUS = ISLAND_SIZE / 2;
+	public Vertex2 offset = new Vertex2(0, 0);
+	public boolean drawOcean = true;
 
 	@Override
 	public void render() {
@@ -31,6 +34,7 @@ public class IslandRenderer extends Renderer {
 			GL11.glFogf(GL11.GL_FOG_END, 500.0f); // Fog End Depth
 			// GL11.glEnable(GL11.GL_FOG);
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
+			GL11.glTranslated(offset.getX(), offset.getY(), 0);
 			Texture t = GameState.getState().getTextureManager().get("test");
 			if (t != null) {
 				t.bind();
@@ -64,12 +68,14 @@ public class IslandRenderer extends Renderer {
 			material(0, 0, 1, 0.6f);
 			GL11.glEnd();
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
-			GL11.glBegin(GL11.GL_QUADS);
-			GL11.glVertex2d(-1000, -1000);
-			GL11.glVertex2d(-1000, 1000);
-			GL11.glVertex2d(1000, 1000);
-			GL11.glVertex2d(1000, -1000);
-			GL11.glEnd();
+			if (drawOcean) {
+    			GL11.glBegin(GL11.GL_QUADS);
+    			GL11.glVertex2d(-1000, -1000);
+    			GL11.glVertex2d(-1000, 1000);
+    			GL11.glVertex2d(1000, 1000);
+    			GL11.glVertex2d(1000, -1000);
+    			GL11.glEnd();
+			}
 			material(1, 0, 1, 1);
 			Model teapot = GameState.getState().getModelManager().get("test");
 			if (teapot != null) {
