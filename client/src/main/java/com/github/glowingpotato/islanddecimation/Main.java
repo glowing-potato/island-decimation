@@ -98,7 +98,7 @@ public class Main {
 		for (int i = 0; i < 30; i++) {
 			GameState.getState().getTroops()
 					.add(new Troop(TroopType.ARCHER, new Vertex3(
-							r.nextInt(256) - 128, r.nextInt(256) - 128, r.nextInt(256) - 128),
+							r.nextInt(256) - 128, r.nextInt(256) - 256, r.nextInt(256) - 128),
 							new Vertex2(0, 0), 0, 10, 1f));
 		}
 		window.addUIRenderer(new SkyRenderer());
