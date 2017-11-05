@@ -35,11 +35,11 @@ public class Troop {
 		double normalY = deltaY / normalizer;
 		this.deltaX = normalX;
 		this.deltaY = normalY;
-		float zLevel= GameState.getState().getIslands().get(0).getTerrain().get((int) getPosition().getX(), (int) getPosition().getY());
+		float zLevel= GameState.getState().getIslands().get(islandIndex).getTerrain().get((int) getPosition().getX() + 128, (int) getPosition().getY() + 128);
 		zLevel = (zLevel == Float.NaN) ? 0 : zLevel;
 		deltaZ = zLevel - z;
 		z = zLevel;
-		setPosition(new Vertex3(getPosition().getX() + normalX, getPosition().getY() + normalY, zLevel));
+		setPosition(new Vertex3(getPosition().getX() + (normalX * speed), getPosition().getY() + (normalY * speed), zLevel));
 	}
 	
 	public void update(Troop troop) {

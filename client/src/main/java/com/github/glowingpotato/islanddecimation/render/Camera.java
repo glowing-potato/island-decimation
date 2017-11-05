@@ -21,6 +21,18 @@ public class Camera {
 	public Vertex3 getCameraPos() {
 		return cameraPos;
 	}
+	
+	public Vertex3 getPhysicalCameraPos() {
+		double zpos = Math.cos(pitch);
+		double xpos = zpos * -Math.cos(yaw) * getZDistance();
+		double ypos = zpos * -Math.sin(yaw) * getZDistance();
+		
+		return new Vertex3(xpos * getZDistance(), ypos, zpos);
+	}
+	
+	public double getZDistance() {
+		return -(16 + Math.pow(2, zoom / 4f));
+	}
 
 	public void setCameraPos(Vertex3 cameraPos) {
 		this.cameraPos = cameraPos;

@@ -137,7 +137,7 @@ public class GLWindow {
 				c.setPitch(85);
 			}
 			cpos = curpos;
-			GL11.glTranslated(0, 0, -(16 + Math.pow(2, c.getZoom() / 4f)));
+			GL11.glTranslated(0, 0, c.getZDistance());
 			GL11.glRotated(c.getPitch() - 90, 1, 0, 0);
 			GL11.glRotated(c.getYaw(), 0, 0, 1);
 			GL11.glTranslated(cameraPos.getX(), cameraPos.getY(), cameraPos.getZ());

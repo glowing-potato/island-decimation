@@ -2,8 +2,6 @@ package com.github.glowingpotato.islanddecimation.render;
 
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
 import com.github.glowingpotato.islanddecimation.state.GameState;
 import com.github.glowingpotato.islanddecimation.view.Island;
 import com.github.glowingpotato.islanddecimation.view.Resource;

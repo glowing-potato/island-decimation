@@ -2,12 +2,17 @@ package com.github.glowingpotato.islanddecimation;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.opengl.ARBFragmentShader;
+import org.lwjgl.opengl.ARBShaderObjects;
+import org.lwjgl.opengl.GL20;
 
 import com.github.glowingpotato.islanddecimation.gui.GLWindow;
+import com.github.glowingpotato.islanddecimation.render.GUIRenderer;
 import com.github.glowingpotato.islanddecimation.render.IslandRenderer;
 import com.github.glowingpotato.islanddecimation.render.SkyRenderer;
 import com.github.glowingpotato.islanddecimation.render.TroopRenderer;
@@ -36,14 +41,44 @@ public class Main {
 		String password = args[1];
 
 		GLFW.glfwInit();
-		File f = new File("src/main/resources/models/car.obj");
+		File f = new File("src/main/resources/models/Wall-E Without Copy Pasta.obj");
 		GameState.getState().getModelManager().load(f, "test");
-		
+
 		GLWindow window = new GLWindow(800, 600, "Testing", 0);
 		GameState.getState().setWindow(window);
 		window.makeContextCurrent();
 		window.init();
-		GameState.getState().getTextureManager().load(new File("src/main/resources/grass.png"), "test");
+		
+		// SHADER
+		int fshader;
+		int vshader;
+		int tshader;
+		int program = ARBShaderObjects.glCreateProgramObjectARB();
+
+		// vshader =
+		// ARBShaderObjects.glCreateShaderObjectARB(ARBVertexShader.GL_VERTEX_SHADER_ARB);
+		// ARBShaderObjects.glShaderSourceARB(vshader,
+		// getResourceAsString("/com/fractal/shader/vertex_shader.txt"));
+		// ARBShaderObjects.glCompileShaderARB(vshader);
+		// ARBShaderObjects.glAttachObjectARB(program, vshader);
+
+		fshader = ARBShaderObjects.glCreateShaderObjectARB(ARBFragmentShader.GL_FRAGMENT_SHADER_ARB);
+		ARBShaderObjects.glShaderSourceARB(fshader, "void main() {\n	gl_FragColor += vec4(1, 1, 0, 1);\n}");
+		ARBShaderObjects.glCompileShaderARB(fshader);
+		ARBShaderObjects.glAttachObjectARB(program, fshader);
+
+		// tshader =
+		// ARBShaderObjects.glCreateShaderObjectARB(ARBTessellationShader.GL_TESS_EVALUATION_SHADER);
+		// ARBShaderObjects.glShaderSourceARB(tshader,
+		// getResourceAsString("/com/fractal/shader/tessellation_shader.txt"));
+		// ARBShaderObjects.glCompileShaderARB(tshader);
+		// ARBShaderObjects.glAttachObjectARB(program, tshader);
+		ARBShaderObjects.glLinkProgramARB(program);
+		//GL20.glUseProgram(program);
+		
+		System.out.println(ARBShaderObjects.glGetInfoLogARB(program));
+		
+		//GameState.getState().getTextureManager().load(new File("src/main/resources/grass.png"), "test");
 		GameState.getState().getFontManager().load("Arial", "arial");
 		Perlin p = new Perlin();
 		Float[] shape = new Float[IslandRenderer.ISLAND_SIZE * IslandRenderer.ISLAND_SIZE];
@@ -57,7 +92,11 @@ public class Main {
 		}
 		Terrain t = new Terrain(Arrays.asList(shape));
 		GameState.getState().getIslands().add(new Island(0.0, null, new Resource(1, 2, 3), t, null));
-		GameState.getState().getTroops().add(new Troop(TroopType.ARCHER, new Vertex3(5, 5, 5), new Vertex2(125, 125), 0, 10));
+		Random r = new Random();
+		for (int i = 0; i < 30; i++) {
+			GameState.getState().getTroops()
+					.add(new Troop(TroopType.ARCHER, new Vertex3(r.nextInt(256) - 128, r.nextInt(256) - 128, r.nextInt(256) - 128), new Vertex2(300, 20), 0, 10));
+		}
 		window.addUIRenderer(new SkyRenderer());
 		window.addUIRenderer(new GUIRenderer());
 		window.addGameRenderer(new IslandRenderer());
