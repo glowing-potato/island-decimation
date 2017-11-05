@@ -22,15 +22,16 @@ public class TroopRenderer extends Renderer {
 
 	@Override
 	public void render() {
-		Model model = GameState.getState().getModelManager().get("test");
+		Model model = GameState.getState().getModelManager().get("wall-e");
 
 		for (Troop troop : GameState.getState().getTroops()) {
 			GL11.glPushMatrix();
-			troop.animate(0.001f);
+			troop.animate();
 			Vertex3 troopPosition = troop.getPosition();
-
 			GL11.glTranslated(troopPosition.getX(), troopPosition.getY(), troopPosition.getZ());
-			GL11.glRotated(Math.atan2(troop.getDeltaY(), troop.getDeltaX()) / Math.PI * 180 + 90, 0, 0, 1);
+			GL11.glRotated(Math.atan2(troop.getDeltaY(), troop.getDeltaX()) / Math.PI * 180, 0, 0, 1);
+			GL11.glRotated(90, 1, 0, 0);
+			GL11.glScaled(0.5, 0.5, 0.5);
 			model.draw();
 			GL11.glPopMatrix();
 			// GL11.glTranslated(troop.getDeltaX(), troop.getDeltaX(), troop.getDeltaZ());

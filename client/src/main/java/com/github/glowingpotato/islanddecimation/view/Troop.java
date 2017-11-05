@@ -11,13 +11,15 @@ public class Troop {
 	private Vertex2 targetPosition;
 	private Integer islandIndex;
 	private Integer health;
+	private Float speed;
 	
-	public Troop(TroopType troopType, Vertex3 position, Vertex2 targetPosition, Integer islandIndex, Integer health) {
+	public Troop(TroopType troopType, Vertex3 position, Vertex2 targetPosition, Integer islandIndex, Integer health, Float speed) {
 		this.troopType = troopType;
 		this.position = position;
 		this.targetPosition = targetPosition;
 		this.islandIndex = islandIndex;
 		this.health = health;
+		this.speed = speed;
 	}
 
 	private double deltaX;
@@ -25,7 +27,7 @@ public class Troop {
 	private double deltaZ;
 	private double z;
 	
-	public void animate(float speed) {
+	public void animate() {
 		double deltaX = targetPosition.getX() - position.getX();
 		double deltaY = targetPosition.getY() - position.getY();
 		if(deltaX < 5 || deltaY < 5)
@@ -105,5 +107,13 @@ public class Troop {
 
 	public void setHealth(Integer health) {
 		this.health = health;
+	}
+
+	public Float getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(Float speed) {
+		this.speed = speed;
 	}
 }

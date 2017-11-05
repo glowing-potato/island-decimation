@@ -41,8 +41,10 @@ public class Main {
 		String password = args[1];
 
 		GLFW.glfwInit();
-		File f = new File("src/main/resources/models/Wall-E Without Copy Pasta.obj");
+		File f = new File("src/main/resources/models/Castle.obj");
 		GameState.getState().getModelManager().load(f, "test");
+		File g = new File("src/main/resources/models/Wall-E Without Copy Pasta.obj");
+		GameState.getState().getModelManager().load(g, "wall-e");
 
 		GLWindow window = new GLWindow(800, 600, "Testing", 0);
 		GameState.getState().setWindow(window);
@@ -95,7 +97,9 @@ public class Main {
 		Random r = new Random();
 		for (int i = 0; i < 30; i++) {
 			GameState.getState().getTroops()
-					.add(new Troop(TroopType.ARCHER, new Vertex3(r.nextInt(256) - 128, r.nextInt(256) - 128, r.nextInt(256) - 128), new Vertex2(300, 20), 0, 10));
+					.add(new Troop(TroopType.ARCHER, new Vertex3(
+							r.nextInt(256) - 128, r.nextInt(256) - 128, r.nextInt(256) - 128),
+							new Vertex2(0, 0), 0, 10, 1f));
 		}
 		window.addUIRenderer(new SkyRenderer());
 		window.addUIRenderer(new GUIRenderer());

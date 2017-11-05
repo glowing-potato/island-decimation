@@ -77,11 +77,15 @@ public class IslandRenderer extends Renderer {
     			GL11.glEnd();
 			}
 			material(1, 0, 1, 1);
-			Model teapot = GameState.getState().getModelManager().get("test");
-			if (teapot != null) {
-				GL11.glTranslated(0, 0, 10);
-				teapot.draw();
+			GL11.glPushMatrix();
+			Model castle = GameState.getState().getModelManager().get("test");
+			if (castle != null) {
+				GL11.glTranslated(25, -25, 10);
+				GL11.glScaled(0.5, 0.5, 0.5);
+				GL11.glRotated(90, 1, 0, 0);
+				castle.draw();
 			}
+			GL11.glPopMatrix();
 		}
 	}
 
